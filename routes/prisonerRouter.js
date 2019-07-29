@@ -3,9 +3,14 @@ const router = require("express").Router();
 const Prisoners = require("../models/prisoner-model");
 
 router.get("/", (req, res) => {
-  console.log("working");
   Prisoners.getAll()
     .then(prisoners => {
+      for (let i = 0; i < prisoners.length; i++) {
+        prisoners[i].skills = prisoners[i].skills.split(", ");
+        prisoners[i].certifications = prisoners[i].certifications.split(", ");
+        prisoners[i].goals = prisoners[i].goals.split(", ");
+      }
+      console.log(prisoners);
       res.status(200).json(prisoners);
     })
     .catch(error => {
