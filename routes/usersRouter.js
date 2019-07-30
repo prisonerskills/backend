@@ -55,13 +55,12 @@ router.post("/login", (req, res) => {
               id: userFound.id,
               username: userFound.username
             };
-            console.log(jwtKey);
+
             // Sign Token
             jwt.sign(payload, jwtKey, { expiresIn: 7200 }, (err, token) => {
-              res.status(200).json({
-                success: true,
-                token: token
-              });
+              res
+                .status(200)
+                .json({ ...userFound, success: true, token: token });
             });
           } else {
             res.status(401).json({ message: "Invalid Credentials" });

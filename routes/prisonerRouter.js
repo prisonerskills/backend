@@ -1,6 +1,7 @@
 const router = require("express").Router();
 
 const Prisoners = require("../models/prisoner-model");
+const { authenticate } = require("../middleware/authenticate");
 
 router.get("/", (req, res) => {
   Prisoners.getAll()
@@ -19,7 +20,7 @@ router.get("/", (req, res) => {
     });
 });
 
-router.post("/add", (req, res) => {
+router.post("/add", authenticate, (req, res) => {
   const prisonerData = req.body;
   prisonerData.skills = prisonerData.skills.join(", ");
   prisonerData.certifications = prisonerData.certifications.join(", ");
