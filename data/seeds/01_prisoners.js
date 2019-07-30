@@ -40,8 +40,8 @@ exports.seed = function(knex) {
         {
           name: "George",
           skills: "Skill-A, Skill-B, Skill-C",
-          certifications: "Cert-A Cert-B Cert-C",
-          goals: "goal-1 goal-2",
+          certifications: "Cert-A, Cert-B, Cert-C",
+          goals: "goal-1, goal-2",
           payRate: 9.5,
           availStart: "9/12/19"
         },
