@@ -12,6 +12,8 @@ exports.up = function(knex) {
         .unique()
         .notNullable();
       tbl.integer("zipCode").notNullable();
+      tbl.integer("city").notNullable();
+      tbl.string("programs");
       tbl
         .string("email")
         .unique()

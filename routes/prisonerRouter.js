@@ -19,7 +19,9 @@ router.get("/", (req, res) => {
     });
 });
 
-router.post("/add", authenticate, (req, res) => {
+// Add prisoner needs authenticate but front end isn't sure how to connect properly.
+
+router.post("/add", (req, res) => {
   const prisonerData = req.body;
   prisonerData.skills = prisonerData.skills.join(", ");
   prisonerData.certifications = prisonerData.certifications.join(", ");
@@ -40,24 +42,51 @@ router.post("/add", authenticate, (req, res) => {
 
 router.get("/prison/:id", (req, res) => {
   const { id } = req.params;
-  Prisoners.getAllById(id).then(prisoners => {
-    prisoners !== null
-      ? res.status(200).json(prisoners)
-      : res.status(400).json({
-          message: "There are no prisoners for that prison"
-        });
-  });
+  Prisoners.getAllById(id)
+    .then(prisoners => {
+      prisoners !== null
+        ? res.status(200).json(prisoners)
+        : res.status(400).json({
+            message: "There are no prisoners for that prison"
+          });
+    })
+    .catch(error => {
+      res.status(500).json(error);
+    });
 });
 
 router.get("/prisoner/:id", (req, res) => {
   const { id } = req.params;
-  Prisoners.findById(id).then(prisoner => {
-    prisoner !== null
-      ? res.status(200).json(prisoner)
-      : res.status(400).json({
-          message: "There is not a prisoner in our database with that ID"
-        });
-  });
+  Prisoners.findById(id)
+    .then(prisoner => {
+      prisoner !== null
+        ? res.status(200).json(prisoner)
+        : res.status(400).json({
+            message: "There is not a prisoner in our database with that ID"
+          });
+    })
+    .catch(error => {
+      res.status(500).json(error);
+    });
+});
+
+router.put("/update/:id", authenticate, (req, res) => {
+  const { id } = req.params;
+  const prisonerData = req.body;
+  prisonerData.skills = prisonerData.skills.join(", ");
+  prisonerData.certifications = prisonerData.certifications.join(", ");
+  prisonerData.goals = prisonerData.goals.join(", ");
+
+  Prisoners.update(id, prisonerData)
+    .then(prisoner => {
+      prisoner.skills = prisoner.skills.split(", ");
+      prisoner.certifications = prisoner.certifications.split(", ");
+      prisoner.goals = prisoner.goals.split(", ");
+      res.status(200).json(prisoner);
+    })
+    .catch(error => {
+      res.status(500).json(error);
+    });
 });
 
 module.exports = router;

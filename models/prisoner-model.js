@@ -4,7 +4,8 @@ module.exports = {
   getAll,
   findById,
   add,
-  getAllById
+  getAllById,
+  update
 };
 
 function getAll() {
@@ -42,4 +43,19 @@ function add(prisoner) {
     .then(id => {
       return findById(...id);
     });
+}
+
+function update(id, changes) {
+  return db("prisoners")
+    .where({ id })
+    .update(changes)
+    .then(prisoner => {
+      return findById(...id);
+    });
+}
+
+function remove(id) {
+  return db("prisoners")
+    .where("id", id)
+    .del();
 }

@@ -14,7 +14,8 @@ router.get("/", (req, res) => {
 
 router.post("/register", (req, res) => {
   const newUser = req.body;
-
+  newUser.programs = newUser.programs.join(", ");
+  console.log(newUser);
   Users.findByUsername(newUser.username).then(userFound => {
     if (userFound !== null) {
       return res.status(400).json({ message: "That username already exists!" });
@@ -25,6 +26,7 @@ router.post("/register", (req, res) => {
           newUser.password = hash;
           Users.add(newUser)
             .then(user => {
+              user.programs = user.programs.split(", ");
               return res.status(200).json(user);
             })
             .catch(err =>
@@ -47,6 +49,7 @@ router.post("/login", (req, res) => {
     if (userFound === null) {
       return res.status(404).json({ username: "User does not exist" });
     } else {
+      userFound.programs = userFound.programs.split(", ");
       bcrypt
         .compare(password, userFound.password)
         .then(isMatch => {
@@ -55,7 +58,7 @@ router.post("/login", (req, res) => {
               id: userFound.id,
               username: userFound.username
             };
-
+            console.log(userFound);
             // Sign Token
             jwt.sign(payload, jwtKey, { expiresIn: 7200 }, (err, token) => {
               res
