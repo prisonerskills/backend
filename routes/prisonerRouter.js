@@ -5,6 +5,7 @@ const Prisoners = require("../models/prisoner-model");
 router.get("/", (req, res) => {
   Prisoners.getAll()
     .then(prisoners => {
+      console.log(prisoners);
       for (let i = 0; i < prisoners.length; i++) {
         prisoners[i].skills = prisoners[i].skills.split(", ");
         prisoners[i].certifications = prisoners[i].certifications.split(", ");
