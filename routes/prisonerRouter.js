@@ -37,4 +37,15 @@ router.post("/add", (req, res) => {
     });
 });
 
+router.get("/id/:id", (req, res) => {
+  const { id } = req.params;
+  Prisoners.findById(id).then(prisoner => {
+    prisoner !== null
+      ? res.status(200).json(prisoner)
+      : res.status(400).json({
+          message: "There is not a prisoner in our database with that ID"
+        });
+  });
+});
+
 module.exports = router;
