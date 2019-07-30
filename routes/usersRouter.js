@@ -58,7 +58,7 @@ router.post("/login", (req, res) => {
               id: userFound.id,
               username: userFound.username
             };
-            console.log(userFound);
+
             // Sign Token
             jwt.sign(payload, jwtKey, { expiresIn: 7200 }, (err, token) => {
               res
