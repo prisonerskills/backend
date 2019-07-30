@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
         prisoners[i].certifications = prisoners[i].certifications.split(", ");
         prisoners[i].goals = prisoners[i].goals.split(", ");
       }
-      console.log(prisoners);
+
       res.status(200).json(prisoners);
     })
     .catch(error => {
@@ -36,6 +36,17 @@ router.post("/add", (req, res) => {
     .catch(error => {
       res.status(500).json(error);
     });
+});
+
+router.get("/prison/:id", (req, res) => {
+  const { id } = req.params;
+  Prisoners.getAllById(id).then(prisoners => {
+    prisoners !== null
+      ? res.status(200).json(prisoners)
+      : res.status(400).json({
+          message: "There are no prisoners for that prison"
+        });
+  });
 });
 
 router.get("/id/:id", (req, res) => {

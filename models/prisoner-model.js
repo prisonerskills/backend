@@ -3,11 +3,24 @@ const db = require("../data/data-config");
 module.exports = {
   getAll,
   findById,
-  add
+  add,
+  getAllById
 };
 
 function getAll() {
   return db("prisoners");
+}
+
+function getAllById(id) {
+  return db("prisoners")
+    .where({ prisonID: id })
+    .then(prisoners => {
+      if (prisoners.length > 0) {
+        return prisoners;
+      } else {
+        return null;
+      }
+    });
 }
 
 function findById(id) {

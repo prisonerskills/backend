@@ -11,7 +11,8 @@ exports.seed = function(knex) {
           certifications: "Cert-A, Cert-B, Cert-C",
           goals: "goal-1, goal-2",
           payRate: 9.5,
-          availStart: "9/12/19"
+          availStart: "9/12/19",
+          prisonId: 1
         },
         {
           name: "Jeff",
@@ -19,7 +20,8 @@ exports.seed = function(knex) {
           certifications: "Cert-A, Cert-B, Cert-C",
           goals: "goal-1, goal-2",
           payRate: 9.5,
-          availStart: "9/12/19"
+          availStart: "9/12/19",
+          prisonId: 2
         },
         {
           name: "Sam",
@@ -27,7 +29,8 @@ exports.seed = function(knex) {
           certifications: "Cert-A, Cert-B, Cert-C",
           goals: "goal-1, goal-2",
           payRate: 9.5,
-          availStart: "9/12/19"
+          availStart: "9/12/19",
+          prisonId: 1
         },
         {
           name: "Max",
@@ -35,7 +38,8 @@ exports.seed = function(knex) {
           certifications: "Cert-A, Cert-B, Cert-C",
           goals: "goal-1, goal-2",
           payRate: 9.5,
-          availStart: "9/12/19"
+          availStart: "9/12/19",
+          prisonId: 2
         },
         {
           name: "George",
@@ -43,7 +47,8 @@ exports.seed = function(knex) {
           certifications: "Cert-A, Cert-B, Cert-C",
           goals: "goal-1, goal-2",
           payRate: 9.5,
-          availStart: "9/12/19"
+          availStart: "9/12/19",
+          prisonId: 1
         },
         {
           name: "Paul",
@@ -51,7 +56,8 @@ exports.seed = function(knex) {
           certifications: "Cert-A, Cert-B, Cert-C",
           goals: "goal-1, goal-2",
           payRate: 9.5,
-          availStart: "9/12/19"
+          availStart: "9/12/19",
+          prisonId: 2
         }
       ]);
     });

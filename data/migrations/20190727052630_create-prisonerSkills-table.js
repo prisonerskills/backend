@@ -7,6 +7,15 @@ exports.up = function(knex) {
         .unique()
         .notNullable();
       tbl.string("password").notNullable();
+      tbl
+        .string("prisonName")
+        .unique()
+        .notNullable();
+      tbl.integer("zipCode").notNullable();
+      tbl
+        .string("email")
+        .unique()
+        .notNullable();
     })
     .createTable("prisoners", tbl => {
       tbl.increments();
@@ -16,6 +25,14 @@ exports.up = function(knex) {
       tbl.string("goals");
       tbl.decimal("payRate");
       tbl.date("availStart");
+      tbl
+        .string("prisonID")
+        .unsigned()
+        .notNullable()
+        .references("id")
+        .inTable("users")
+        .onUpdate("CASCADE")
+        .onDelete("CASCADE");
     });
 };
 

@@ -14,7 +14,6 @@ router.get("/", (req, res) => {
 
 router.post("/register", (req, res) => {
   const newUser = req.body;
-  const userPassword = req.body.password;
 
   Users.findByUsername(newUser.username).then(userFound => {
     if (userFound !== null) {
