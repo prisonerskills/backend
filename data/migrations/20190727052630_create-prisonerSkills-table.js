@@ -25,6 +25,7 @@ exports.up = function(knex) {
       tbl.string("goals");
       tbl.decimal("payRate");
       tbl.date("availStart");
+      tbl.string("headline");
       tbl
         .string("prisonID")
         .unsigned()
@@ -37,5 +38,5 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-  return knex.schema.dropTableIfExists("users").dropTableIfExists("prisoners");
+  return knex.schema.dropTableIfExists("prisoners");
 };

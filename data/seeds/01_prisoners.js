@@ -12,7 +12,8 @@ exports.seed = function(knex) {
           goals: "goal-1, goal-2",
           payRate: 9.5,
           availStart: "9/12/19",
-          prisonId: 1
+          prisonId: 1,
+          headline: "Entry-Level Medical Transcriptionist"
         },
         {
           name: "Jeff",
@@ -21,7 +22,8 @@ exports.seed = function(knex) {
           goals: "goal-1, goal-2",
           payRate: 9.5,
           availStart: "9/12/19",
-          prisonId: 2
+          prisonId: 2,
+          headline: "Entry-Level Medical Transcriptionist"
         },
         {
           name: "Sam",
@@ -30,7 +32,8 @@ exports.seed = function(knex) {
           goals: "goal-1, goal-2",
           payRate: 9.5,
           availStart: "9/12/19",
-          prisonId: 1
+          prisonId: 1,
+          headline: "Trained Bookkeeper"
         },
         {
           name: "Max",
@@ -39,7 +42,8 @@ exports.seed = function(knex) {
           goals: "goal-1, goal-2",
           payRate: 9.5,
           availStart: "9/12/19",
-          prisonId: 2
+          prisonId: 2,
+          headline: "Trained Bookkeeper"
         },
         {
           name: "George",
@@ -48,7 +52,8 @@ exports.seed = function(knex) {
           goals: "goal-1, goal-2",
           payRate: 9.5,
           availStart: "9/12/19",
-          prisonId: 1
+          prisonId: 1,
+          headline: "Skilled Web Developer"
         },
         {
           name: "Paul",
@@ -57,7 +62,8 @@ exports.seed = function(knex) {
           goals: "goal-1, goal-2",
           payRate: 9.5,
           availStart: "9/12/19",
-          prisonId: 2
+          prisonId: 2,
+          headline: "Skilled Web Developer"
         }
       ]);
     });

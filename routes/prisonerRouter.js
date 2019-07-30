@@ -6,7 +6,6 @@ const { authenticate } = require("../middleware/authenticate");
 router.get("/", (req, res) => {
   Prisoners.getAll()
     .then(prisoners => {
-      console.log(prisoners);
       for (let i = 0; i < prisoners.length; i++) {
         prisoners[i].skills = prisoners[i].skills.split(", ");
         prisoners[i].certifications = prisoners[i].certifications.split(", ");
@@ -50,7 +49,7 @@ router.get("/prison/:id", (req, res) => {
   });
 });
 
-router.get("/id/:id", (req, res) => {
+router.get("/prisoner/:id", (req, res) => {
   const { id } = req.params;
   Prisoners.findById(id).then(prisoner => {
     prisoner !== null
