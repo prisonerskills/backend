@@ -8,6 +8,9 @@ const Users = require("../models/users-model");
 
 router.get("/", (req, res) => {
   Users.getAll().then(users => {
+    for (let i = 0; i < users.length; i++) {
+      users[i].programs = users[i].programs.split(", ");
+    }
     res.status(200).json(users);
   });
 });
