@@ -23,9 +23,6 @@ router.get("/", (req, res) => {
 
 router.post("/add", (req, res) => {
   const prisonerData = req.body;
-  prisonerData.skills = prisonerData.skills.join(", ");
-  prisonerData.certifications = prisonerData.certifications.join(", ");
-  prisonerData.goals = prisonerData.goals.join(", ");
 
   Prisoners.add(prisonerData)
     .then(prisoner => {
@@ -73,9 +70,6 @@ router.get("/prisoner/:id", (req, res) => {
 router.put("/update/:id", authenticate, (req, res) => {
   const { id } = req.params;
   const prisonerData = req.body;
-  prisonerData.skills = prisonerData.skills.join(", ");
-  prisonerData.certifications = prisonerData.certifications.join(", ");
-  prisonerData.goals = prisonerData.goals.join(", ");
 
   Prisoners.update(id, prisonerData)
     .then(prisoner => {
