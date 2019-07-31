@@ -17,8 +17,6 @@ router.get("/", (req, res) => {
 
 router.post("/register", (req, res) => {
   const newUser = req.body;
-  newUser.programs = newUser.programs.join(", ");
-  console.log(newUser);
   Users.findByUsername(newUser.username).then(userFound => {
     if (userFound !== null) {
       return res.status(400).json({ message: "That username already exists!" });
